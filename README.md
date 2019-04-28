@@ -1,6 +1,4 @@
-# tripfront
-
-> Tripfront CMS.
+# Tripfront CMS
 
 ## Build Setup
 
