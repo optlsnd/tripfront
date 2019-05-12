@@ -31,18 +31,43 @@
           <div class="column is-one-quarter">
             <div class="field">
               <label class="label is-small">Find by name</label>
-              <div class="control">
+              <div class="control has-icons-left">
                 <input
                   v-model="nameFilter"
                   class="input
                   is-small"
                   type="text"
                 />
+                <span class="icon is-small is-left">
+                  <i class="fas fa-filter"></i>
+                </span>
               </div>
             </div>
           </div>
           <div class="column is-one-third">
             <div class="columns">
+              <div class="column">
+                <div class="field">
+                  <label class="label is-small">Filter by collection</label>
+                  <div class="control has-icons-left">
+                    <div class="select is-small">
+                      <select v-model="filterCollections">
+                        <option value="">All collections</option>
+                        <option
+                          v-for="(col, i) in collections"
+                          :key="i"
+                          :value="col.name"
+                        >
+                          {{ col.name }}
+                        </option>
+                      </select>
+                    </div>
+                    <div class="icon is-small is-left">
+                      <i class="fas fa-filter"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div class="column">
                 <div class="field">
                   <label class="label is-small">Filter by type</label>
@@ -58,30 +83,12 @@
                   </div>
                 </div>
               </div>
-              <div class="column">
-                <div class="field">
-                  <label class="label is-small">Filter by collection</label>
-                  <div class="control">
-                    <div class="select is-small">
-                      <select v-model="filterCollections">
-                        <option value="">All collections</option>
-                        <option
-                          v-for="(col, i) in collections"
-                          :key="i"
-                          :value="col.name"
-                        >
-                          {{ col.name }}
-                        </option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
+    <hr />
     <AssetsTable
       :name-filter="nameFilter"
       :filter-frames="filterFrames"

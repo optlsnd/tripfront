@@ -47,7 +47,8 @@ export default {
     AUTH0_DOMAIN: 'tripfront.auth0.com',
     AUTH0_CLIENT_ID: 'bQeUNmaXCmT67rh8gRvUKzv9f5rK2fa9',
     API_URL:
-      'https://wt-fcd7d443d809cb6474b42f8a2614a2cf-0.sandbox.auth0-extend.com/triptych-backend/'
+      'https://wt-fcd7d443d809cb6474b42f8a2614a2cf-0.sandbox.auth0-extend.com/triptych-backend/',
+    UC_PUB_KEY: 'ceb44f7cbc78c2bf893a'
   },
 
   /*

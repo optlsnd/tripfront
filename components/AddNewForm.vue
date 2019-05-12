@@ -103,7 +103,7 @@ export default {
       collection: '',
       description: '',
       type: 'frame',
-      publicKey: 'demopublickey',
+      publicKey: process.env.UC_PUB_KEY,
       ucTabs: 'file',
       widget: null
     }

@@ -7,7 +7,7 @@
     <footer class="footer">
       <div class="content has-text-centered">
         <p class="is-size-7">
-          Tripfront CMS. All rights reserved. 2019
+          Tripfront CMS. 2019. <a href="mailto:optlsnd@gmail.com">Contact us</a>
         </p>
       </div>
     </footer>
@@ -25,24 +25,6 @@ export default {
 </script>
 
 <style>
-/* html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-} */
-
-/* *,
-*:before,
-*:after {
-  box-sizing: border-box;
-} */
-
 .footer,
 .section {
   padding: 1rem;
@@ -60,5 +42,9 @@ export default {
 
 label .checkbox {
   user-select: none;
+}
+
+.cb-large {
+  transform: scale(1.25);
 }
 </style>

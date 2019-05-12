@@ -3,11 +3,11 @@
     <div class="container">
       <div class="navbar-brand">
         <div class="navbar-item">Tripfront</div>
-        <button class="button navbar-burger">
+        <!-- <button class="button navbar-burger">
           <span></span>
           <span></span>
           <span></span>
-        </button>
+        </button> -->
       </div>
       <div class="navbar-menu">
         <div class="navbar-end">
@@ -21,6 +21,9 @@
             <div class="navbar-dropdown">
               <nuxt-link class="navbar-item" to="/dashboard">
                 Dashboard
+              </nuxt-link>
+              <nuxt-link class="navbar-item" to="/settings">
+                Settings
               </nuxt-link>
               <nuxt-link class="navbar-item" to="/profile">
                 Profile

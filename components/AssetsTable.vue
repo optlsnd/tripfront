@@ -4,7 +4,7 @@
       <table class="table is-hoverable is-fullwidth align-vertical">
         <thead>
           <tr>
-            <th style="width: 20px;"></th>
+            <!-- <th style="width: 20px;"></th> -->
             <th style="width: 80px;">Preview</th>
             <th style="width: 80px;">Type</th>
             <th style="width: 160px;">Name</th>
@@ -15,9 +15,9 @@
         </thead>
         <tbody>
           <tr v-for="(asset, i) in assetsFiltered" :key="i">
-            <td class="has-text-centered">
+            <!-- <td class="has-text-centered">
               <input type="checkbox" />
-            </td>
+            </td> -->
             <td class="has-text-centered">
               <img
                 :src="generateThumb(asset.uuid)"
@@ -49,6 +49,9 @@
           </tr>
         </tbody>
       </table>
+      <p v-show="!assetsFiltered.length" class="is-size-6 has-text-centered">
+        No assets to display &#128040;
+      </p>
     </div>
     <AssetPreview ref="previewModal" :asset="assetToPreview" />
   </section>
