@@ -3,5 +3,6 @@
   "name": "nuxt-static",
   "builds": [
       { "src": "package.json", "use": "@now/static-build" }
-  ]
+  ],
+  "alias": ["tripfront.now.sh"]
 }

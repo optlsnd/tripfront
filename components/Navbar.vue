@@ -2,7 +2,7 @@
   <nav class="navbar is-light">
     <div class="container">
       <div class="navbar-brand">
-        <div class="navbar-item">Tripfront | {{ this.$route.name }}</div>
+        <div class="navbar-item">Tripfront</div>
         <button class="button navbar-burger">
           <span></span>
           <span></span>
