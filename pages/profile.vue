@@ -12,8 +12,9 @@
                   </figure>
                 </div>
                 <div class="media-content">
-                  <p class="title is-5">Name: {{ loggedInUser.nickname }}</p>
-                  <p class="subtitle is-6">Email: {{ loggedInUser.email }}</p>
+                  <div>Name: {{ loggedInUser.nickname }}</div>
+                  <div>Email: {{ loggedInUser.email }}</div>
+                  <div>Admin: {{ isAdmin }}</div>
                 </div>
               </div>
             </div>
@@ -29,7 +30,13 @@ import { mapGetters } from 'vuex'
 
 export default {
   computed: {
-    ...mapGetters(['loggedInUser'])
+    ...mapGetters(['loggedInUser']),
+    isAdmin() {
+      return this.loggedInUser['https://tripfront.now.sh/user_metadata']
+        .tripfront_admin
+        ? 'yes'
+        : 'no'
+    }
   },
   middleware: 'auth'
 }
