@@ -68,6 +68,24 @@ export default {
       default() {
         return ''
       }
+    },
+    filterFrames: {
+      type: Boolean,
+      default() {
+        return true
+      }
+    },
+    filterBorders: {
+      type: Boolean,
+      default() {
+        return true
+      }
+    },
+    filterCollections: {
+      type: String,
+      default() {
+        return ''
+      }
     }
   },
   data() {
@@ -81,6 +99,13 @@ export default {
     }),
     assetsFiltered() {
       return this.$store.state.assets.assets.filter(asset => {
+        if (asset.type === 'frame' && !this.filterFrames) return false
+        if (asset.type === 'border' && !this.filterBorders) return false
+        if (
+          this.filterCollections.length &&
+          this.filterCollections !== asset.collection
+        )
+          return false
         const f = this.nameFilter.toLowerCase()
         return asset.name.toLowerCase().indexOf(f) > -1
       })

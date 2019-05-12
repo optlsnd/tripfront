@@ -57,4 +57,8 @@ export default {
 .site__content {
   flex: 1;
 }
+
+label .checkbox {
+  user-select: none;
+}
 </style>

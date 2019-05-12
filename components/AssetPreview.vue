@@ -48,7 +48,7 @@ export default {
     cdnUrl() {
       return `https://ucarecdn.com/${
         this.asset.uuid
-      }/-/resize/300x/-/format/auto/-/quality/lighter/`
+      }/-/resize/300x/-/format/jpeg/-/quality/lighter/`
     }
   },
   methods: {
