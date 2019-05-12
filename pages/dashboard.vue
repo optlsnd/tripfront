@@ -3,7 +3,7 @@
     <section class="section">
       <div class="container">
         <div class="columns">
-          <div class="column">
+          <div class="column is-one-fifth">
             <label class="label is-small">Actions</label>
             <div>
               <button
@@ -26,9 +26,7 @@
               </button>
             </div>
           </div>
-        </div>
-        <div class="columns">
-          <div class="column is-one-quarter">
+          <div class="column is-one-fifth">
             <div class="field">
               <label class="label is-small">Find by name</label>
               <div class="control has-icons-left">
@@ -44,7 +42,7 @@
               </div>
             </div>
           </div>
-          <div class="column is-one-third">
+          <div class="column">
             <div class="columns">
               <div class="column">
                 <div class="field">
