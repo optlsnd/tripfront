@@ -20,6 +20,18 @@
             </div>
           </div>
           <div class="field">
+            <label class="label is-size-7">Orientation</label>
+            <div class="control">
+              <div class="select">
+                <select v-model="orientation">
+                  <option value="portrait" selected>Portrait</option>
+                  <option value="landscape">Landscape</option>
+                  <option value="square">Square</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="field">
             <label class="label is-size-7">Type</label>
             <div class="control">
               <div class="select">
@@ -100,6 +112,7 @@ export default {
     return {
       uuid: '',
       name: '',
+      orientation: 'portrait',
       collection: '',
       description: '',
       type: 'frame',
@@ -124,6 +137,15 @@ export default {
     this.widget = uploadcare.Widget('[role=uploadcare-uploader]')
     this.widget.onUploadComplete(info => {
       this.uuid = info.uuid
+      const width = info.originalImageInfo.width
+      const height = info.originalImageInfo.height
+      if (width > height) {
+        this.orientation = 'landscape'
+      } else if (width < height) {
+        this.orientation = 'portrait'
+      } else {
+        this.orientation = 'square'
+      }
     })
   },
   methods: {
@@ -131,6 +153,7 @@ export default {
       const itemToAdd = [
         {
           type: this.type,
+          orientation: this.orientation,
           uuid: this.uuid,
           name: this.name,
           collection: this.collection,
