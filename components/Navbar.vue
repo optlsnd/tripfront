@@ -2,7 +2,7 @@
   <nav class="navbar is-light">
     <div class="container">
       <div class="navbar-brand">
-        <div class="navbar-item">Tripfront</div>
+        <div class="navbar-item main-logo">Tripfront</div>
         <!-- <button class="button navbar-burger">
           <span></span>
           <span></span>
@@ -69,3 +69,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.main-logo {
+  user-select: none;
+}
+</style>

@@ -81,7 +81,7 @@ export default {
     redirect: {
       login: '/',
       logout: '/',
-      home: '/profile',
+      home: '/dashboard',
       callback: '/'
     },
     resetOnError: true

@@ -6,8 +6,9 @@
           <tr>
             <!-- <th style="width: 20px;"></th> -->
             <th style="width: 80px;">Preview</th>
-            <th style="width: 80px;">Type</th>
             <th style="width: 160px;">Name</th>
+            <th style="width: 80px;">Type</th>
+            <th style="width: 100px;">Orientation</th>
             <th style="width: 240px;">Collection</th>
             <th>Description</th>
             <th class="has-text-centered" style="width: 80px;">Action</th>
@@ -26,13 +27,14 @@
                 @click="showPreview(asset)"
               />
             </td>
-            <td>{{ asset.type }}</td>
             <td>
-              <strong>{{ asset.name }}</strong>
+              <strong>{{ asset.name || 'unnamed' }}</strong>
             </td>
-            <td>{{ asset.collection }}</td>
+            <td>{{ asset.type || 'no type' }}</td>
+            <td>{{ asset.orientation || '' }}</td>
+            <td>{{ asset.collection || 'not in collection' }}</td>
             <!-- <td>{{ asset.uuid }}</td> -->
-            <td>{{ asset.description }}</td>
+            <td>{{ asset.description || 'no description' }}</td>
             <!-- <td>{{ asset.date_uploaded }}</td> -->
             <td class="has-text-centered">
               <button
@@ -66,28 +68,35 @@ export default {
     AssetPreview
   },
   props: {
-    nameFilter: {
+    filterName: {
       type: String,
       default() {
         return ''
       }
     },
-    filterFrames: {
-      type: Boolean,
-      default() {
-        return true
-      }
-    },
-    filterBorders: {
-      type: Boolean,
-      default() {
-        return true
-      }
-    },
-    filterCollections: {
+    filterCollection: {
       type: String,
       default() {
         return ''
+      }
+    },
+    filterType: {
+      type: Object,
+      default() {
+        return {
+          frames: true,
+          borders: true
+        }
+      }
+    },
+    filterOrientation: {
+      type: Object,
+      default() {
+        return {
+          portrait: true,
+          landscape: true,
+          square: true
+        }
       }
     }
   },
@@ -101,17 +110,31 @@ export default {
       assets: 'assets/uploadedAssets'
     }),
     assetsFiltered() {
-      return this.$store.state.assets.assets.filter(asset => {
-        if (asset.type === 'frame' && !this.filterFrames) return false
-        if (asset.type === 'border' && !this.filterBorders) return false
-        if (
-          this.filterCollections.length &&
-          this.filterCollections !== asset.collection
-        )
-          return false
-        const f = this.nameFilter.toLowerCase()
-        return asset.name.toLowerCase().indexOf(f) > -1
-      })
+      return this.assets
+        .filter(item => {
+          const searchString = this.filterName.toLowerCase()
+          return item.name.toLowerCase().indexOf(searchString) > -1
+        })
+        .filter(item => {
+          return (
+            (this.filterType.frames && item.type === 'frame') ||
+            (this.filterType.borders && item.type === 'border')
+          )
+        })
+        .filter(item => {
+          return (
+            (this.filterOrientation.portrait &&
+              item.orientation === 'portrait') ||
+            (this.filterOrientation.landscape &&
+              item.orientation === 'landscape') ||
+            (this.filterOrientation.square && item.orientation === 'square') ||
+            !item.orientation
+          )
+        })
+        .filter(item => {
+          if (!this.filterCollection.length) return true
+          return item.collection === this.filterCollection
+        })
     }
   },
   methods: {

@@ -31,7 +31,7 @@
               <label class="label is-small">Find by name</label>
               <div class="control has-icons-left">
                 <input
-                  v-model="nameFilter"
+                  v-model="filterName"
                   class="input
                   is-small"
                   type="text"
@@ -71,12 +71,40 @@
                   <label class="label is-small">Filter by type</label>
                   <div class="control">
                     <label class="checkbox is-size-7">
-                      <input v-model="filterFrames" type="checkbox" />
+                      <input v-model="filterType.frames" type="checkbox" />
                       Frames
                     </label>
                     <label class="checkbox is-size-7">
-                      <input v-model="filterBorders" type="checkbox" />
+                      <input v-model="filterType.borders" type="checkbox" />
                       Borders
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="column">
+                <div class="field">
+                  <label class="label is-small">Filter by orientation</label>
+                  <div class="control">
+                    <label class="checkbox is-size-7">
+                      <input
+                        v-model="filterOrientation.portrait"
+                        type="checkbox"
+                      />
+                      Portrait
+                    </label>
+                    <label class="checkbox is-size-7">
+                      <input
+                        v-model="filterOrientation.landscape"
+                        type="checkbox"
+                      />
+                      Landscape
+                    </label>
+                    <label class="checkbox is-size-7">
+                      <input
+                        v-model="filterOrientation.square"
+                        type="checkbox"
+                      />
+                      Square
                     </label>
                   </div>
                 </div>
@@ -88,10 +116,10 @@
     </section>
     <hr />
     <AssetsTable
-      :name-filter="nameFilter"
-      :filter-frames="filterFrames"
-      :filter-borders="filterBorders"
-      :filter-collections="filterCollections"
+      :filter-name="filterName"
+      :filter-type="filterType"
+      :filter-orientation="filterOrientation"
+      :filter-collection="filterCollections"
     />
     <AddNewForm :is-open="assetModalOpen" @closeAssetModal="closeAssetModal" />
     <AddCollection
@@ -118,10 +146,17 @@ export default {
     return {
       assetModalOpen: false,
       collectionModalOpen: false,
-      nameFilter: '',
-      filterFrames: true,
-      filterBorders: true,
-      filterCollections: ''
+      filterName: '',
+      filterCollections: '',
+      filterType: {
+        frames: true,
+        borders: true
+      },
+      filterOrientation: {
+        portrait: true,
+        landscape: true,
+        square: true
+      }
     }
   },
   computed: {

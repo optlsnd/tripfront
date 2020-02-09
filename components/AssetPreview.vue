@@ -11,13 +11,14 @@
       >
         <div class="content">
           <dl>
-            <li>Name: {{ asset.name }}</li>
-            <li>Type: {{ asset.type }}</li>
-            <li>Collection: {{ asset.collection }}</li>
-            <li>Uploaded: {{ formatDate(asset.date_uploaded) }}</li>
-            <li v-if="asset.description">
-              Description: {{ asset.description }}
+            <li>Name: {{ asset.name || 'untitled' }}</li>
+            <li>Type: {{ asset.type || 'no type' }}</li>
+            <li>Orientation: {{ asset.orientation || 'no orientation' }}</li>
+            <li>Collection: {{ asset.collection || 'not in collection' }}</li>
+            <li>
+              Uploaded: {{ formatDate(asset.date_uploaded) || 'unknown' }}
             </li>
+            <li>Description: {{ asset.description || 'no description' }}</li>
           </dl>
           <a :href="originalUrl" class="is-size-6">Download</a>
         </div>
